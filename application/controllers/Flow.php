@@ -2,13 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Flow extends CI_Controller {
 
-	function __construct ()
+	
+	function __construct()
 	{
 		parent::__construct();
         $this->load->helper('url');		
 	}
-	
-	public function start ()
+
+	/**
+	 * Outputs welcome message to webhook using TwiML
+	 */
+	public function start()
 	{
 		/*After saying the welcome message and retrieving the caller’s input, Twilio will send the Digits parameter through an HTTP request to the action URL.*/
 		header('Content-type: application/xml');
@@ -21,7 +25,12 @@ class Flow extends CI_Controller {
 		</Response>';
 	}
 
-	public function process ()
+	/**
+	 * Respond to User's Input using TwiML
+	 *
+	 * @var int $input Should contain an integer
+	 */
+	public function process()
 	{
 		header('Content-type: application/xml');
 		$input = $_REQUEST["Digits"];
