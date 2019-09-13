@@ -1,11 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');class Flow extends CI_Controller {
-	function __construct()
+defined('BASEPATH') OR exit('No direct script access allowed');
+class Flow extends CI_Controller {
+
+	function __construct ()
 	{
 		parent::__construct();
         $this->load->helper('url');		
-    }
-	public function start()
+	}
+	
+	public function start ()
 	{
 		/*After saying the welcome message and retrieving the caller’s input, Twilio will send the Digits parameter through an HTTP request to the action URL.*/
 		header('Content-type: application/xml');
@@ -17,7 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');class Flow extend
 		<Say>We didn\'t receive any input. Goodbye!</Say>
 		</Response>';
 	}
-	public function process()
+
+	public function process ()
 	{
 		header('Content-type: application/xml');
 		$input = $_REQUEST["Digits"];
